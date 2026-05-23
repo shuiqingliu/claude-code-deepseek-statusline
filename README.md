@@ -2,11 +2,7 @@
 
 A feature-rich status line for [Claude Code](https://code.claude.com/) when using DeepSeek models. Shows model info, context window usage, token counts, session cost, and account balance — all in one glance.
 
-![screenshot](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-blue) ![license](https://img.shields.io/badge/license-MIT-green)
-
-```
-🤖 deepseek-v4-pro[1m]  [██████░░░░] 60%  |  ⬇ 73K ⬆ 186  |  💰 ¥0.85  |  💳 ¥49.36 [¥6/M (output)]
-```
+![screenshot](screenshot.png)
 
 ## Features
 

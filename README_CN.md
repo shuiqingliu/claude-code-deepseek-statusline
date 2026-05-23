@@ -2,11 +2,7 @@
 
 一个功能丰富的 [Claude Code](https://code.claude.com/) 状态栏，专为 DeepSeek 模型用户打造。一目了然地展示模型信息、上下文窗口、Token 用量、会话花费和账户余额。
 
-![screenshot](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-blue) ![license](https://img.shields.io/badge/license-MIT-green)
-
-```
-🤖 deepseek-v4-pro[1m]  [██████░░░░] 60%  |  ⬇ 73K ⬆ 186  |  💰 ¥0.85  |  💳 ¥49.36 [¥6/M (output)]
-```
+![screenshot](screenshot.png)
 
 ## 功能模块
 
