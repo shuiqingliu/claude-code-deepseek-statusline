@@ -4,6 +4,8 @@
 
 ![screenshot](screenshot.png)
 
+> [English](README.md) | [中文文档](README_CN.md)
+
 ## 功能模块
 
 | 模块 | 图标 | 说明 |

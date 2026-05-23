@@ -4,6 +4,8 @@ A feature-rich status line for [Claude Code](https://code.claude.com/) when usin
 
 ![screenshot](screenshot.png)
 
+> [中文文档](README_CN.md) | [English](README.md)
+
 ## Features
 
 | Module | Icon | Description |
