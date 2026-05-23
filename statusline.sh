@@ -39,7 +39,7 @@ elif [ $pct -gt 50 ]; then bar_color="33"
 else bar_color="32"
 fi
 
-# ---- token counts (context-window totals, matches percentage) ----------------
+# ---- context window snapshot (for progress bar reference) --------------------
 total_in=$(echo "$input"  | jq -r '.context_window.total_input_tokens // 0')
 total_out=$(echo "$input" | jq -r '.context_window.total_output_tokens // 0')
 [ "$total_in"  = "null" ] && total_in=0
@@ -127,8 +127,8 @@ out="${out}$(printf ' \033[%sm[%s]\033[0m \033[%sm%d%%\033[0m' \
   "$bar_color" "$bar" "$bar_color" "$pct")"
 
 # 3. Token counts (total in context window)
-in_f=$(fmt_t "$total_in")
-out_f=$(fmt_t "$total_out")
+in_f=$(fmt_t "$cum_in")
+out_f=$(fmt_t "$cum_out")
 out="${out}$(printf ' \033[2m|\033[0m \033[36m⬇ %s\033[0m \033[35m⬆ %s\033[0m' "$in_f" "$out_f")"
 
 # 4. Session cost (cumulative, uncached tokens)

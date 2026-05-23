@@ -10,7 +10,7 @@ A feature-rich status line for [Claude Code](https://code.claude.com/) when usin
 |--------|------|-------------|
 | Model | `🤖` | Current model display name |
 | Context | `[██████░░░░]` | 10-segment progress bar + percentage, color-coded (green/yellow/red) |
-| Tokens | `⬇` / `⬆` | Total input/output tokens in the context window (auto-formatted K/M) |
+| Tokens | `⬇` / `⬆` | Cumulative session input/output tokens (uncached, auto-formatted K/M) |
 | Cost | `💰` | Cumulative session cost in CNY, based on uncached token usage |
 | Balance | `💳` | DeepSeek account balance (cached 5 min) + model output pricing |
 
@@ -77,7 +77,7 @@ rm -f ~/.claude/.ds-bal ~/.claude/.sl_state_*
 
 1. Claude Code pipes session JSON to the script via stdin on each update
 2. The script extracts model, context window, and token usage with `jq`
-3. Cost is calculated from **uncached** tokens only — cache-hit tokens cost virtually nothing and are excluded
+3. Cost and token display use cumulative **uncached** tokens only — cache-hit tokens cost virtually nothing and are excluded
 4. Balance is fetched from `https://api.deepseek.com/user/balance` and cached for 5 minutes
 5. Cumulative tokens are tracked per session via state files, so cost grows across your entire conversation
 
