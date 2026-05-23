@@ -19,20 +19,17 @@ A feature-rich status line for [Claude Code](https://code.claude.com/) when usin
 - [Claude Code](https://code.claude.com/) v2.1.132+
 - [jq](https://jqlang.github.io/jq/) (JSON processor)
 - [curl](https://curl.se/)
-- A DeepSeek API account
+- Claude Code already configured for DeepSeek — follow the [official DeepSeek guide](https://github.com/deepseek-ai/awesome-deepseek-agent/blob/main/docs/claude_code.md#option-1-configure-via-configuration-file). Your existing `ANTHROPIC_AUTH_TOKEN` is automatically reused for the balance check.
 
 ## Quick Install
 
 ```bash
 # 1. Clone and copy the script
-git clone https://github.com/your-org/claude-code-deepseek-statusline.git
+git clone https://github.com/shuiqingliu/claude-code-deepseek-statusline.git
 cp claude-code-deepseek-statusline/statusline.sh ~/.claude/statusline.sh
 chmod +x ~/.claude/statusline.sh
 
-# 2. Set your DeepSeek API token
-export DEEPSEEK_API_TOKEN="sk-your-deepseek-api-key"
-
-# 3. Add to ~/.claude/settings.json:
+# 2. Add to ~/.claude/settings.json (no extra token needed if DeepSeek is already configured):
 # {
 #   "statusLine": {
 #     "type": "command",
@@ -45,12 +42,16 @@ Or use the `/statusline` command in Claude Code and point it to the script.
 
 ## Configuration
 
-### Environment Variables
+### API Token
+
+**No extra token setup needed** if you already configured Claude Code for DeepSeek via the [official guide](https://github.com/deepseek-ai/awesome-deepseek-agent/blob/main/docs/claude_code.md#option-1-configure-via-configuration-file). The script reuses your `ANTHROPIC_AUTH_TOKEN` from `~/.claude/settings.json`.
+
+If you prefer a separate token for the balance API:
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `DEEPSEEK_API_TOKEN` | Yes | Your DeepSeek API key |
-| `ANTHROPIC_AUTH_TOKEN` | No | Fallback if `DEEPSEEK_API_TOKEN` is not set |
+| `ANTHROPIC_AUTH_TOKEN` | Auto | Your DeepSeek API key (already set if following the official guide) |
+| `DEEPSEEK_API_TOKEN` | No | Set this only if you want to use a different key for the balance check |
 
 ### Pricing
 
@@ -92,7 +93,7 @@ rm -f ~/.claude/.ds-bal ~/.claude/.sl_state_*
 - **Cost monitoring**: Track session spend in real-time while coding with DeepSeek models
 - **Context awareness**: The progress bar and percentage help you know when to `/compact`
 - **Balance tracking**: Never get surprised by a zero balance mid-session
-- **Multi-account**: Switch DeepSeek accounts via the `DEEPSEEK_API_TOKEN` env var
+- **Multi-account**: Set `DEEPSEEK_API_TOKEN` if you need a different key for balance checks
 
 ## Adding More Models
 
@@ -113,5 +114,6 @@ MIT — see [LICENSE](LICENSE) file.
 ## See Also
 
 - [Claude Code Statusline Docs](https://code.claude.com/docs/en/statusline)
+- [DeepSeek Claude Code Setup](https://github.com/deepseek-ai/awesome-deepseek-agent/blob/main/docs/claude_code.md)
 - [DeepSeek API Pricing](https://api-docs.deepseek.com/zh-cn/quick_start/pricing)
 - [DeepSeek Balance API](https://api.deepseek.com/user/balance)

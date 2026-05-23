@@ -19,20 +19,17 @@
 - [Claude Code](https://code.claude.com/) v2.1.132+
 - [jq](https://jqlang.github.io/jq/)（JSON 处理工具）
 - [curl](https://curl.se/)
-- DeepSeek API 账号
+- Claude Code 已按 [DeepSeek 官方指南](https://github.com/deepseek-ai/awesome-deepseek-agent/blob/main/docs/claude_code.md#option-1-configure-via-configuration-file) 配置好 DeepSeek 模型。余额检查会自动复用你已有的 `ANTHROPIC_AUTH_TOKEN`。
 
 ## 快速安装
 
 ```bash
 # 1. 克隆仓库并复制脚本
-git clone https://github.com/your-org/claude-code-deepseek-statusline.git
+git clone https://github.com/shuiqingliu/claude-code-deepseek-statusline.git
 cp claude-code-deepseek-statusline/statusline.sh ~/.claude/statusline.sh
 chmod +x ~/.claude/statusline.sh
 
-# 2. 设置 DeepSeek API Token
-export DEEPSEEK_API_TOKEN="sk-你的-deepseek-api-key"
-
-# 3. 在 ~/.claude/settings.json 中添加：
+# 2. 在 ~/.claude/settings.json 中添加（已配置 DeepSeek 则无需额外 token）：
 # {
 #   "statusLine": {
 #     "type": "command",
@@ -45,12 +42,16 @@ export DEEPSEEK_API_TOKEN="sk-你的-deepseek-api-key"
 
 ## 配置说明
 
-### 环境变量
+### API Token
+
+如果你已按 [DeepSeek 官方指南](https://github.com/deepseek-ai/awesome-deepseek-agent/blob/main/docs/claude_code.md#option-1-configure-via-configuration-file) 配置了 Claude Code，**无需额外设置 token**。脚本会自动复用 `~/.claude/settings.json` 中已有的 `ANTHROPIC_AUTH_TOKEN`。
+
+如需为余额 API 使用独立 token：
 
 | 变量 | 必填 | 说明 |
 |------|------|------|
-| `DEEPSEEK_API_TOKEN` | 是 | DeepSeek API 密钥 |
-| `ANTHROPIC_AUTH_TOKEN` | 否 | 如果未设置 `DEEPSEEK_API_TOKEN`，会使用此变量作为后备 |
+| `ANTHROPIC_AUTH_TOKEN` | 自动 | DeepSeek API 密钥（按官方指南配置后自动可用） |
+| `DEEPSEEK_API_TOKEN` | 否 | 仅需为余额检查使用不同密钥时设置 |
 
 ### 价格表
 
@@ -92,7 +93,7 @@ rm -f ~/.claude/.ds-bal ~/.claude/.sl_state_*
 - **费用监控**：使用 DeepSeek 模型编程时实时追踪会话费用
 - **上下文感知**：进度条和百分比帮你判断何时需要 `/compact`
 - **余额追踪**：不会在会话中途突然发现余额不足
-- **多账号管理**：通过 `DEEPSEEK_API_TOKEN` 环境变量切换不同的 DeepSeek 账号
+- **多账号管理**：如需为余额检查使用不同账号，可设置 `DEEPSEEK_API_TOKEN` 环境变量
 
 ## 添加更多模型
 
@@ -113,5 +114,6 @@ MIT — 详见 [LICENSE](LICENSE) 文件。
 ## 相关链接
 
 - [Claude Code 状态栏文档](https://code.claude.com/docs/en/statusline)
+- [DeepSeek Claude Code 官方配置指南](https://github.com/deepseek-ai/awesome-deepseek-agent/blob/main/docs/claude_code.md)
 - [DeepSeek API 定价](https://api-docs.deepseek.com/zh-cn/quick_start/pricing)
 - [DeepSeek 余额 API](https://api.deepseek.com/user/balance)
